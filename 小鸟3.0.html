@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+			<style type="text/css">
+			@-webkit-keyframes fly {
+				0% {
+					background: url("img/bird0.png");
+				}
+				100% {
+					background: url("img/bird1.png");
+				}
+			}
+			
+			@keyframes fly {
+				0% {
+					background: url("img/bird0.png");
+				}
+				100% {
+					background: url("img/bird1.png");
+				}
+			}
+			
+			@-webkit-keyframes headmove {
+				0% {
+					-webkit-transform: translate3d(0, 0, 0);
+					-ms-transform: translate3d(0, 0, 0);
+					-o-transform: translate3d(0, 0, 0);
+					transform: translate3d(0, 0, 0);
+				}
+				100% {
+					-webkit-transform: translate3d(0, 30px, 0);
+					-ms-transform: translate3d(0, 30px, 0);
+					-o-transform: translate3d(0, 30px, 0);
+					transform: translate3d(0, 30px, 0);
+				}
+			}
+			
+			@keyframes headmove {
+				0% {
+					-webkit-transform: translate3d(0, 0, 0);
+					-ms-transform: translate3d(0, 0, 0);
+					-o-transform: translate3d(0, 0, 0);
+					transform: translate3d(0, 0, 0);
+				}
+				100% {
+					-webkit-transform: translate3d(0, 30px, 0);
+					-ms-transform: translate3d(0, 30px, 0);
+					-o-transform: translate3d(0, 30px, 0);
+					transform: translate3d(0, 30px, 0);
+				}
+			}
+			
+			@-webkit-keyframes slidermove {
+				0% {
+					-webkit-transform: translate3d(0, 0, 0);
+					-ms-transform: translate3d(0, 0, 0);
+					-o-transform: translate3d(0, 0, 0);
+					transform: translate3d(0, 0, 0);
+				}
+				100% {
+					-webkit-transform: translate3d(-350px, 0, 0);
+					-ms-transform: translate3d(-350px, 0, 0);
+					-o-transform: translate3d(-350px, 0, 0);
+					transform: translate3d(-350px, 0, 0);
+				}
+			}
+			
+			@keyframes slidermove {
+				0% {
+					-webkit-transform: translate3d(0, 0, 0);
+					-ms-transform: translate3d(0, 0, 0);
+					-o-transform: translate3d(0, 0, 0);
+					transform: translate3d(0, 0, 0);
+				}
+				100% {
+					-webkit-transform: translate3d(-350px, 0, 0);
+					-ms-transform: translate3d(-350px, 0, 0);
+					-o-transform: translate3d(-350px, 0, 0);
+					transform: translate3d(-350px, 0, 0);
+				}
+			}
+			
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body,
+			html {
+				height: 100%;
+			}
+			
+			#wrap {
+				width: 100%;
+				height: 100%;
+				/*border: 1px solid red;*/
+				background: url("img/bg.jpg");
+				-webkit-background-size: 100% 100%;
+				background-size: 100% 100%;
+				position: relative;
+				overflow: hidden;
+				margin: 0 auto;
+			}
+			
+			#head {
+				position: absolute;
+				left: 50px;
+				top: 90px;
+				-webkit-animation: "headmove" 1s infinite alternate;
+				-o-animation: "headmove" 1s infinite alternate;
+				animation: "headmove" 1s infinite alternate;
+			}
+			
+			#head span {
+				background: url("img/bird0.png");
+				position: absolute;
+				right: 0;
+				top: 20px;
+				width: 40px;
+				height: 26px;
+				-webkit-background-size: 100% 100%;
+				background-size: 100% 100%;
+				-webkit-animation: "fly" 0.5s infinite;
+				-o-animation: "fly" 0.5s infinite;
+				animation: "fly" 0.5s infinite;
+				-webkit-animation-direction: alternate;
+				-o-animation-direction: alternate;
+				animation-direction: alternate;
+			}
+			
+			#scoring {
+				position: absolute;
+				left: 48%;
+				top: 40px;
+					z-index: 100;
+			}
+			
+			#menu {
+				position: absolute;
+				left: 40%;
+				top: 60%;
+			
+			}
+			
+			#sliderWrap {
+				width: 9999px;
+				bottom: 9.2%;
+				position: absolute;
+				-webkit-animation: "slidermove" linear 4s infinite;
+				-o-animation: "slidermove" linear 4s infinite;
+				animation: "slidermove" linear 4s infinite;
+			}
+			
+			#bird {
+				position: absolute;
+				left: 30px;
+				top: 25%;
+				display: none;
+			}
+			
+			#ductWrap li {
+				position: absolute;
+				top: 0;
+				width: 62px;
+				/*border: 1px solid red;*/
+				height: 100%;
+				list-style: none;
+			}
+			
+			.duct_up {
+				background: url("img/up_mod.png") repeat-y;
+				height: 10%;
+				position: relative;
+			}
+			
+			.duct_up img {
+				position: absolute;
+				bottom: 0;
+			}
+			
+			.duct_down {
+				background: url("img/down_mod.png") repeat-y;
+				height: 65%;
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+			}
+		
+			.duct_down img {
+				position: absolute;
+				top: 0;
+			}
+			.msg{
+			position: absolute;
+			top: 45%;
+			width: 100%;
+			text-align: center;
+			z-index: 100;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="head">
+				<img src="img/head.jpg" alt="">
+				<span></span>
+			</div>
+			<div id="scoring">
+				<img src="img/0.jpg" alt="">
+			</div>
+			<div id="menu">
+				<img id="start" src="img/start.jpg" alt="">
+			</div>
+			<div id="sliderWrap">
+				<img src="img/banner.jpg" alt=""><img src="img/banner.jpg" alt="">
+			</div>
+			<div id="bird">
+				<img src="img/down_bird0.png" alt="">
+			</div>
+			<ul id="ductWrap">
+			<!--<li style="left:100px">
+				<div class="duct_up">
+					<img src="img/up_pipe.png" alt="">
+				</div>
+				<div class="duct_down">
+					<img src="img/down_pipe.png" alt="">
+				</div>
+			</li> -->
+			</ul>
+		</div>
+		<script type="text/javascript">
+		var wrap = document.getElementById("wrap");
+			var start = document.querySelector("#start");
+			var menu = document.querySelector("#menu");
+			var bird = document.getElementById("bird");
+			var head = document.getElementById("head");
+			var ductWrap = document.querySelector("#ductWrap");
+			//找到bird里的img,放到bird div里
+			bird.imgObj = bird.querySelector("img");
+			var lis = document.getElementsByTagName("li");
+			var scoreNum = 0;
+			var score = document.querySelector("#scoring");
+			
+			start.onclick=function(ev){
+				var ev = ev||window.event;
+				menu.style.display = "none";
+				head.style.display = "none";
+				bird.style.display="block";
+				//初始速度
+				bird.speed = 0;
+				bird.move  = setInterval(function(){
+					bird.speed +=0.5;
+					if(bird.speed>0){
+						bird.imgObj.src="img/down_bird0.png";
+					}else{
+						bird.imgObj.src="img/up_bird0.png";
+					}
+					if(bird.speed>=10){
+						bird.spped = 10;
+					}
+					bird.style.top = bird.offsetTop+bird.speed+"px"; //根据速度实时更新鸟的高度
+					var ducts = ductWrap.querySelectorAll("div");//找到所有的管子
+					//让鸟和这些水管进行碰撞检测
+					for(var i = 0;i<ducts.length;i++){
+						if(rectCrash(bird,ducts[i])||bird.offsetTop>=wrap.clientHeight-bird.offsetHeight){//碰撞检测
+//							alert("Game Over!");
+						var msg = document.createElement("div");
+						msg.className="msg";
+						msg.innerHTML="<img src='img/game_over.jpg' /></br><img src='img/message.jpg' />";
+						wrap.appendChild(msg);
+						
+							//游戏结束,清除定时器
+							clearTimer();
+						}
+					}
+				},30);
+				
+				document.onmousedown = function(ev){
+					bird.speed = -7;
+					var e = ev||window.event;
+					e.preventDefault();
+				}
+				var createDuct = null;
+				createDuct = setInterval(function(){
+					var ductli = document.createElement("li");
+					var upHeight = rand(65,10);
+					//找到水管起始的距左的偏移量(从屏幕最右边出现)
+					ductli.l = document.body.offsetWidth;
+					ductli.style.left = ductli.l+"px";
+					//随机生成高度不同的水管
+					ductli.innerHTML= '<div style="height:'+upHeight+'%" class="duct_up duct">'+
+					'<img src="img/up_pipe.png" alt="">'+
+				'</div>'+
+				'<div class="duct_down duct" style="height:'+(75 - upHeight)+'%">'+
+					'<img src="img/down_pipe.png" alt="">'+
+				'</div>';
+				ductWrap.appendChild(ductli);
+				ductli.addScore = true;
+				//让水管向前进行移动
+				ductli.move = setInterval(function(){
+				ductli.l-=2;
+				if(ductli.l<=-62){//移出到屏幕左侧,水管宽度是62
+					clearInterval(ductli.move);
+					ductWrap.removeChild(ductli);//清除定时器,移除水管
+					return;
+					//鸟离开水管
+				}else if(ductli.l<=-32){
+					if(ductli.addScore){
+						scoreNum++
+						//用布尔值来防止分数重复叠加
+						ductli.addScore = false;
+					}
+				}
+			//改变分数
+					score.innerHTML="";
+					var scoreStr = String(scoreNum);
+					for(var i=0;i<scoreStr.length;i++){
+						var img = document.createElement("img");
+						img.src="img/"+scoreStr[i]+".jpg";
+						score.appendChild(img);
+					}
+				ductli.style.left=ductli.l+"px";
+				},15);
+				
+				
+				},3000);
+				ev.cancelBubble = true;
+			}
+			
+			
+			//随机函数,用来随机水管高度
+			function rand(max,min){
+				return  parseInt(Math.random()*(max-min+1))+min;
+			}
+			
+				//完成碰撞函数的封装
+			function rectCrash(obj1, obj2) {
+				var t1 = obj1.offsetTop;
+				var b1 = t1 + obj1.offsetHeight;
+				var l1 = obj1.offsetLeft;
+				var r1 = l1 + obj1.offsetWidth;
+				var t2 = obj2.offsetTop;
+				var b2 = t2 + obj2.offsetHeight;
+				var l2 = obj2.parentNode.offsetLeft;
+				var r2 = l2 + obj2.offsetWidth;
+				//找没撞上的,然后else就是撞上的结果
+				if(b1 < t2 || t1 > b2 || r1 < l2 || l1 > r2) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+			
+			//清除定时器
+			function clearTimer(){
+				var timer = setTimeout(function(){
+					for(var i = 1;i<timer;i++){
+						clearInterval(i);
+					}
+				},1);
+			}
+		</script>
+	</body>
+</html>
